@@ -1,0 +1,10 @@
+{
+  "name": "reservasi-ruangan",
+  "version": "1.0.0",
+  "description": "Aplikasi reservasi ruangan berbasis web (JavaScript murni) - Tugas I 11S3133 PABWE",
+  "scripts": {
+    "test": "node --test"
+  },
+  "author": "Dea Maranata Siregar (11S24008)",
+  "license": "MIT"
+}

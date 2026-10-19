@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+  Tugas I - 11S3133 Pengembangan Aplikasi Berbasis Web
+  Nama : Dea Maranata Siregar
+  NIM  : 11S24008
+  Program Studi Informatika, Institut Teknologi Del
+-->
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservasi Ruangan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Reservasi Ruangan</h1>
+    <p>Dikembangkan dengan bantuan AI generatif (Claude) &middot; JavaScript murni &middot; Jam operasional 08:00-20:00</p>
+  </header>
+
+  <main class="layout">
+    <section class="card" aria-labelledby="h-room">
+      <h2 id="h-room">Ruangan</h2>
+      <form id="room-form" autocomplete="off" novalidate>
+        <div class="row">
+          <label class="grow">Nama ruangan <input id="r-name" type="text" maxlength="60"></label>
+          <label class="narrow">Kapasitas <input id="r-cap" type="number" inputmode="numeric"></label>
+        </div>
+        <button type="submit" class="primary">Tambah ruangan</button>
+        <p id="room-msg" class="msg" role="alert" hidden></p>
+      </form>
+      <ul id="room-list" class="rooms"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="h-book">
+      <h2 id="h-book">Buat Reservasi</h2>
+      <form id="book-form" autocomplete="off" novalidate>
+        <label>Ruangan <select id="b-room"></select></label>
+        <div class="row">
+          <label class="grow">Nama pemesan <input id="b-name" type="text" maxlength="60"></label>
+          <label class="narrow">Peserta <input id="b-people" type="number" inputmode="numeric"></label>
+        </div>
+        <label>Keperluan <input id="b-purpose" type="text" maxlength="100"></label>
+        <div class="row">
+          <label class="grow">Tanggal <input id="b-date" type="date"></label>
+          <label class="grow">Mulai <input id="b-start" type="time" step="1800"></label>
+          <label class="grow">Selesai <input id="b-end" type="time" step="1800"></label>
+        </div>
+        <button type="submit" class="primary">Pesan</button>
+        <p id="book-msg" class="msg" role="alert" hidden></p>
+      </form>
+
+      <div class="slots">
+        <h3>Cek slot kosong</h3>
+        <div class="row">
+          <label class="grow">Durasi
+            <select id="s-dur">
+              <option value="30">30 menit</option>
+              <option value="60" selected>1 jam</option>
+              <option value="90">1,5 jam</option>
+              <option value="120">2 jam</option>
+              <option value="180">3 jam</option>
+              <option value="240">4 jam</option>
+            </select>
+          </label>
+          <button type="button" id="btn-slots" class="ghost align-end">Tampilkan slot</button>
+        </div>
+        <div id="slot-list" class="chips" aria-live="polite"></div>
+        <p class="hint">Pilih ruangan dan tanggal pada formulir di atas, lalu klik sebuah jam untuk mengisi formulir.</p>
+      </div>
+    </section>
+
+    <section class="card wide" aria-labelledby="h-sched">
+      <div class="head">
+        <h2 id="h-sched">Jadwal Reservasi</h2>
+        <div class="filters">
+          <select id="f-room" aria-label="Filter ruangan"></select>
+          <input id="f-date" type="date" aria-label="Filter tanggal">
+          <button type="button" id="f-clear" class="ghost small">Reset</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tanggal</th><th>Waktu</th><th>Ruangan</th><th>Pemesan</th><th>Keperluan</th><th>Peserta</th><th>Status</th><th>Aksi</th></tr></thead>
+          <tbody id="sched-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="reservasi.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
